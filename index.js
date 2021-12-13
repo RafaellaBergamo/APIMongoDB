@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 
+const personRoutes = require('./routes/personRoutes')
+
 app.use(
     express.urlencoded({
         extended: true
@@ -9,6 +11,8 @@ app.use(
 )
 
 app.use(express.json())
+
+app.use('/person', personRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'Teste mensagem' })  
